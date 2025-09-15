@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        background-color: #eee;
+      }
+      .my-bg-primary {
+        background-color: rgb(48 176 217) !important;
+      }
+      .my-ul {
+        list-style: none;
+        padding: 0px;
+
+        /* list-style-type: circle; */
+      }
+      li::before {
+        content: "😒";
+        padding: 0px 20px;
+      }
+      .my-skill {
+        position: relative;
+        top: -50px;
+        z-index: -1;
+      }
+      .my-card-body {
+        padding-top: 70px;
+        padding-bottom: 30px;
+        position: relative;
+        top: -70px;
+        z-index: -1;
+        min-height: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="my-bg-primary container p-4 text-light my-3 rounded-3">
+      <div class="row">
+        <div class="col-4 text-center rounded roundded">
+          <img
+            class="rounded-circle"
+            src="data:image/png;base64,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"
+            alt=""
+          />
+        </div>
+        <div class="col-8">
+          <p>Hello, my name is</p>
+          <h1 class="my-3">Abdelfattah Hamdi</h1>
+          <p>
+            Software Developer with strong foundations in software development
+            and problem-solving, and experience in building full-stack
+            applications. Eager to learn, grow, and contribute to real-world
+            software projects.
+          </p>
+          <a class="link text-light btn btn-outline-dark shadow" href=""
+            >Hire Me</a
+          >
+        </div>
+      </div>
+    </header>
+    <main class="container">
+      <div>
+        <h2>Skills Overview</h2>
+        <p>
+          I have more than 8 years' experience building rich web applications
+          for clients all over the world. Below is a quick overview of my main
+          technical skill sets and tools I use. Want to find out more about my
+          experience? <a href=""> Check out my online resume. </a>
+        </p>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <div class="d-flex justify-content-center aligh-items-center my-3">
+            <div
+              style="width: 75px; height: 75px"
+              class="my-bg-primary p-2 rounded-circle d-flex justify-content-center aligh-items-center"
+            >
+              <img
+                class="w-75"
+                src="https://themes.3rdwavemedia.com/instance/bs5/assets/images/frontend-icon.svg"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="bg-white py-4 my-skill rounded-3 border shadow">
+            <h3 class="text-center my-4">Frontend</h3>
+            <ul class="my-ul">
+              <li class="my-1">React/Redux/Angular</li>
+              <li class="my-1">Javascript</li>
+              <li class="my-1">Node.js</li>
+              <li class="my-1">Webpack/Gulp/Grunt</li>
+              <li class="my-1">HTML/CSS/SASS/LESS</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="d-flex justify-content-center aligh-items-center my-3">
+            <div
+              style="width: 75px; height: 75px"
+              class="my-bg-primary p-2 rounded-circle d-flex justify-content-center aligh-items-center"
+            >
+              <img
+                class="w-75"
+                src="https://themes.3rdwavemedia.com/instance/bs5/assets/images/backend-icon.svg"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="bg-white py-4 my-skill rounded-3 border shadow">
+            <h3 class="text-center my-4">Backend</h3>
+            <ul class="my-ul">
+              <li class="my-1">Python/Django</li>
+              <li class="my-1">Ruby/Rails</li>
+              <li class="my-1">PHP</li>
+              <li class="my-1">PostgresSQL/MySQL</li>
+              <li class="my-1">MongoDB</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="d-flex justify-content-center aligh-items-center my-3">
+            <div
+              style="width: 75px; height: 75px"
+              class="my-bg-primary p-2 rounded-circle d-flex justify-content-center aligh-items-center"
+            >
+              <img
+                class="w-75"
+                src="https://themes.3rdwavemedia.com/instance/bs5/assets/images/frontend-icon.svg"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="bg-white py-4 my-skill rounded-3 border shadow">
+            <h3 class="text-center my-4">Others</h3>
+            <ul class="my-ul">
+              <li class="my-1">DevOps</li>
+              <li class="my-1">Unit Testing</li>
+              <li class="my-1">UX/Wireframing</li>
+              <li class="my-1">Sketch/Balsamiq</li>
+              <li class="my-1">Wordpress/Shopify</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="">
+        <div class="container my-bg-primary py-3 my-3 rounded-3 text-white">
+          <h2 class="py-3">Projects</h2>
+          <p>
+            In-depth Case Studies to show you what I can offer and how I work
+          </p>
+        </div>
+        <div class="row m-0">
+          <div class="col-4">
+            <div class="d-flex justify-content-center align-items-center">
+              <div
+                style="background-color: #eee"
+                class="w-50 p-3 rounded-circle"
+              >
+                <img
+                  src="https://trifit.pythonanywhere.com/static/images/data/logo.png"
+                  class="card-img-top bg-dark rounded-circle shadow-lg"
+                  alt="..."
+                />
+              </div>
+            </div>
+
+            <div
+              class="w-100 shadow my-card-body bg-white rounded-3 shadow px-3 col-4 d-flex justify-content-center align-items-center"
+            >
+              <div class="card-body">
+                <h5 class="card-title h3 my-3">TRI-FIT</h5>
+                <p class="card-text">
+                  Professional gym management system with personalized training,
+                  diet plans, and progress tracking.
+                </p>
+                <p class="card-text">
+                  <a
+                    href="https://trifit.pythonanywhere.com/"
+                    class="text-body-secondary"
+                    >visit it</a
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="d-flex justify-content-center align-items-center">
+              <div
+                style="background-color: #eee"
+                class="w-50 p-3 rounded-circle"
+              >
+                <img
+                  src="https://goby2.com/static/logo.png"
+                  class="card-img-top bg-orange rounded-circle shadow-lg"
+                  alt="..."
+                />
+              </div>
+            </div>
+
+            <div
+              class="w-100 shadow my-card-body bg-white rounded-3 shadow px-3 col-4 d-flex justify-content-center align-items-center"
+            >
+              <div class="card-body">
+                <h5 class="card-title h3 my-3">GOBY</h5>
+                <p class="card-text">
+                  Delicious Food Delivered To Your Doorstep, Fast Delivery
+                  Variety of Restaurants Secure Payments
+                </p>
+                <p class="card-text">
+                  <a href="https://goby2.com/" class="text-body-secondary"
+                    >visit it</a
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer></footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
